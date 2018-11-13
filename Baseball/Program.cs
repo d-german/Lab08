@@ -21,19 +21,22 @@ namespace Baseball
             Db.Players.Add(newPlayer);
 
             //Must save changes to the database
-            Db.SaveChanges();
+            var numChanges = Db.SaveChanges();
 
             //display the database, note the new player
             DisplayPlayers();
+            Console.WriteLine($"There were {numChanges} change(s) to the database");
+
 
             //Remove the previously added player
             Db.Players.Remove(newPlayer);
             //Must save the changes to the database
-            Db.SaveChanges();
+            numChanges = Db.SaveChanges();
+           
 
             //Display the database, note the new player is gone.
             DisplayPlayers();
-
+            Console.WriteLine($"There were {numChanges} change(s) to the database");
             DisplayPlayers(p => p.LastName == "ZZZZ");
         }
 
